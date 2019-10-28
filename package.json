@@ -1,0 +1,23 @@
+{
+  "name": "gravity-form-bootstrap",
+  "version": "1.0.0",
+  "description": "CSS toolbox to overload Gravity Forms with Bootstrap 4",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vigicorp/GravityFormBootstrap.git"
+  },
+  "keywords": [
+    "bootstrap",
+    "gravity form"
+  ],
+  "author": "Vigicorp",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Vigicorp/GravityFormBootstrap/issues"
+  },
+  "homepage": "https://github.com/Vigicorp/GravityFormBootstrap#readme"
+}
