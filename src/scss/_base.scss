@@ -1,0 +1,205 @@
+/**
+*
+* VARS and MIXIN
+* Se base sur bootstrap 4
+* Il faut juste modifier les mixins classique de bootstrap 4
+*/
+
+
+/**
+*
+* CONTENT
+*
+*/
+
+
+.validation_error {
+  margin-bottom: $form-feedback-margin-top;
+
+  color: $form-feedback-invalid-color;
+}
+
+.gform_body {
+  // form-group
+  ul.gform_fields {
+    @extend .list-unstyled;
+    >li {
+      &:not(:last-child) {
+        @extend %form-group;
+      }
+    }
+  }
+
+  //   label
+  .gfield_label {
+    @extend %label;
+    @extend %label-custom;
+  }
+
+  //   custom checkbox and radio
+  .gfield_checkbox, .gfield_radio, .ginput_container_consent {
+    @extend %custom-control;
+
+    margin-bottom: 0;
+
+    list-style: none;
+
+    /* TODO checkbox and radio custom **/
+    >li {
+      display: flex;
+
+      min-height: $custom-control-indicator-size;
+      +li {
+        margin-top: $form-group-margin-bottom;
+      }
+    }
+    label {
+      @extend %custom-control-label;
+
+      margin-left: 10px;
+
+      cursor: pointer;
+    }
+  }
+
+  .ginput_container_consent {
+    label {
+      +.gfield_required {
+        display: none;
+      }
+    }
+  }
+
+  // input
+  input {
+    &:not([type="file"]):not([type="checkbox"]):not([type="radio"]):not([type="submit"]) {
+      @extend %form-control;
+    }
+
+
+    &[type="checkbox"], &[type="radio"] {
+      @extend %custom-control-input;
+    }
+
+    &[type="checkbox"] {
+      @extend %custom-checkbox;
+    }
+    &[type="radio"] {
+      @extend %custom-radio;
+    }
+
+
+    &[type="file"] {
+      // @extend %custom-file-input;
+    }
+  }
+  textarea {
+    @extend %form-control;
+
+    height: auto;
+  }
+
+
+  //   custom select
+  select {
+    @include hover-focus() {
+      cursor: pointer;
+    }
+
+    @extend %custom-select;
+  }
+
+  .clear-multi {
+    display: flex;
+
+    margin-right: -5px;
+    margin-left: -5px;
+
+    flex-wrap: wrap;
+    >div {
+      @include border-radius($input-border-radius, 0);
+
+      display: flex;
+
+      margin-right: 5px;
+      margin-bottom: 5px;
+      margin-left: 5px;
+
+      background: $input-bg;
+
+      flex: 1 0 auto;
+      i {
+        display: none;
+      }
+      label {
+        margin: 0;
+        padding: 10px;
+
+        align-self: center;
+      }
+    }
+  }
+
+  .screen-reader-text {
+    font-size: 1.2rem;
+
+    display: block;
+
+    margin-top: 5px;
+  }
+
+
+  // inputfile
+  .gform_drop_area {
+    &::after {
+      @include fontello-basic();
+
+      content: "\e80c";
+
+      font-size: 20px;
+      line-height: $input-height;
+
+      position: absolute;
+      z-index: 1;
+      right: $input-padding-x;
+      bottom: 0;
+
+      height: $input-height;
+
+      pointer-events: none;
+    }
+    input {
+      text-align: left;
+    }
+  }
+
+
+  .gfield_description {
+    @extend %form-text;
+  }
+}
+
+.gform_footer {
+  margin-top: 40px;
+  [type="submit"] {
+    @extend .btn;
+    @extend .btn-primary;
+
+    min-width: 219px;
+  }
+}
+
+/* END */
+
+
+
+
+
+// TODO
+
+body .gform_wrapper img.ui-datepicker-trigger {
+  display: inline-block;
+
+  width: 17px;
+  height: 16px;
+}

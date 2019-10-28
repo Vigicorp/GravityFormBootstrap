@@ -1,0 +1,342 @@
+/**
+*
+* VARS and MIXIN
+* Se base sur bootstrap 4
+* Il faut juste modifier les mixins classique de bootstrap 4
+*/
+
+%form-group {
+  margin-bottom: $form-group-margin-bottom;
+}
+
+%label {
+  // Allow labels to use `margin` for spacing.
+  display: inline-block;
+
+  margin-bottom: $label-margin-bottom;
+}
+%label-custom {
+  @include font-weight("black");
+  @include letter-spacing(100);
+
+  font-size: 1.2rem;
+
+  text-transform: uppercase;
+}
+
+%form-control {
+  @include font-size($input-font-size);
+  // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
+  @include border-radius($input-border-radius, 0);
+  @include box-shadow($input-box-shadow);
+  @include transition($input-transition);
+  // Customize the `:focus` state to imitate native WebKit styles.
+  @include form-control-focus();
+
+  font-family: $input-font-family;
+  font-weight: $input-font-weight;
+  line-height: $input-line-height;
+
+  display: block;
+
+  width: 100%;
+  height: $input-height;
+  padding: $input-padding-y $input-padding-x;
+
+  color: $input-color;
+  border: $input-border-width solid $input-border-color;
+  background-color: $input-bg;
+  background-clip: padding-box;
+
+  .gfield.gfield_error & {
+    border-color: $danger;
+    background-color: #ffe6e8;
+  }
+
+  // Unstyle the caret on `<select>`s in IE10+.
+  &::-ms-expand {
+    border: 0;
+    background-color: transparent;
+  }
+
+  // Placeholder
+  &::placeholder {
+    // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
+    opacity: 1;
+    color: $input-placeholder-color;
+  }
+
+  // Disabled and read-only inputs
+  //
+  // HTML5 says that controls under a fieldset > legend:first-child won't be
+  // disabled if the fieldset is disabled. Due to implementation difficulty, we
+  // don't honor that edge case; we style them as disabled anyway.
+  &:disabled, &[readonly] {
+    // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
+    opacity: 1;
+    background-color: $input-disabled-bg;
+  }
+}
+
+%custom-select {
+  @include font-size($custom-select-font-size);
+  @include border-radius($custom-select-border-radius, 0);
+  @include box-shadow($custom-select-box-shadow);
+
+  font-family: $custom-select-font-family;
+  font-weight: $custom-select-font-weight;
+  line-height: $custom-select-line-height;
+
+  display: inline-block;
+
+  width: 100%;
+  height: $custom-select-height;
+  padding: $custom-select-padding-y ($custom-select-padding-x + $custom-select-indicator-padding) $custom-select-padding-y $custom-select-padding-x;
+
+  vertical-align: middle;
+
+  color: $custom-select-color;
+  border: $custom-select-border-width solid $custom-select-border-color;
+  background: $custom-select-background;
+  background-color: $custom-select-bg;
+
+  appearance: none;
+
+  .gfield.gfield_error & {
+    border-color: $danger;
+    background-color: #ffe6e8;
+  }
+
+  &:focus {
+    border-color: $custom-select-focus-border-color;
+    outline: 0;
+    @if $enable-shadows {
+      box-shadow: $custom-select-box-shadow, $custom-select-focus-box-shadow;
+    } @else {
+      box-shadow: $custom-select-focus-box-shadow;
+    }
+
+    &::-ms-value {
+      // For visual consistency with other platforms/browsers,
+      // suppress the default white text on blue background highlight given to
+      // the selected option text when the (still closed) <select> receives focus
+      // in IE and (under certain conditions) Edge.
+      // See https://github.com/twbs/bootstrap/issues/19398.
+      color: $input-color;
+      background-color: $input-bg;
+    }
+  }
+
+  &[multiple], &[size]:not([size="1"]) {
+    height: auto;
+    padding-right: $custom-select-padding-x;
+
+    background-image: none;
+  }
+
+  &:disabled {
+    color: $custom-select-disabled-color;
+    background-color: $custom-select-disabled-bg;
+  }
+
+  // Hides the default caret in IE11
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+// input checkbox and radio
+%custom-control-input {
+  position: absolute;
+  z-index: -1; // Put the input behind the label so it doesn't overlay text
+
+  opacity: 0;
+
+  &:checked~label::before {
+    @include gradient-bg($custom-control-indicator-checked-bg);
+    @include box-shadow($custom-control-indicator-checked-box-shadow);
+
+    color: $custom-control-indicator-checked-color;
+    border-color: $custom-control-indicator-checked-border-color;
+  }
+
+  &:focus~label::before {
+    // the mixin is not used here to make sure there is feedback
+    @if $enable-shadows {
+      box-shadow: $input-box-shadow, $input-focus-box-shadow;
+    } @else {
+      box-shadow: $custom-control-indicator-focus-box-shadow;
+    }
+  }
+
+  &:focus:not(:checked)~label::before {
+    border-color: $custom-control-indicator-focus-border-color;
+  }
+
+  &:not(:disabled):active~label::before {
+    @include box-shadow($custom-control-indicator-active-box-shadow);
+
+    color: $custom-control-indicator-active-color;
+    border-color: $custom-control-indicator-active-border-color;
+    background-color: $custom-control-indicator-active-bg;
+  }
+
+  &:disabled {
+    ~label {
+      color: $custom-control-label-disabled-color;
+
+      &::before {
+        background-color: $custom-control-indicator-disabled-bg;
+      }
+    }
+  }
+}
+
+// label  checkbox and radio
+%custom-control-label {
+  position: relative;
+
+  margin-bottom: 0;
+
+  vertical-align: top;
+
+  // Background-color and (when enabled) gradient
+  &::before {
+    @include box-shadow($custom-control-indicator-box-shadow);
+
+    content: "";
+
+    position: absolute;
+    top: ($font-size-base * $line-height-base - $custom-control-indicator-size) / 2;
+    left: -($custom-control-gutter + $custom-control-indicator-size);
+
+    display: block;
+
+    width: $custom-control-indicator-size;
+    height: $custom-control-indicator-size;
+
+    pointer-events: none;
+
+    border: $custom-control-indicator-border-color solid $custom-control-indicator-border-width;
+    background-color: $custom-control-indicator-bg;
+  }
+
+  // Foreground (icon)
+  &::after {
+    content: "";
+
+    position: absolute;
+    top: ($font-size-base * $line-height-base - $custom-control-indicator-size) / 2;
+    left: -($custom-control-gutter + $custom-control-indicator-size);
+
+    display: block;
+
+    width: $custom-control-indicator-size;
+    height: $custom-control-indicator-size;
+
+    background: no-repeat 50% / #{$custom-control-indicator-bg-size};
+  }
+}
+
+%custom-control {
+  position: relative;
+
+  display: block;
+
+  min-height: $font-size-base * $line-height-base;
+  padding-left: $custom-control-gutter + $custom-control-indicator-size;
+}
+
+%custom-checkbox {
+  ~label {
+    &::before {
+      @include border-radius($custom-checkbox-indicator-border-radius);
+    }
+  }
+  &:checked~label {
+    &::after {
+      background-image: $custom-checkbox-indicator-icon-checked;
+    }
+  }
+  &:indeterminate~label {
+    &::before {
+      @include gradient-bg($custom-checkbox-indicator-indeterminate-bg);
+      @include box-shadow($custom-checkbox-indicator-indeterminate-box-shadow);
+
+      border-color: $custom-checkbox-indicator-indeterminate-border-color;
+    }
+    &::after {
+      background-image: $custom-checkbox-indicator-icon-indeterminate;
+    }
+  }
+  &:disabled {
+    &:checked~label::before {
+      background-color: $custom-control-indicator-checked-disabled-bg;
+    }
+    &:indeterminate~label::before {
+      background-color: $custom-control-indicator-checked-disabled-bg;
+    }
+  }
+}
+
+%custom-radio {
+  ~label::before {
+    // stylelint-disable-next-line property-blacklist
+    border-radius: $custom-radio-indicator-border-radius;
+  }
+  &:checked~label {
+    &::after {
+      background-image: $custom-radio-indicator-icon-checked;
+    }
+  }
+  &:disabled {
+    &:checked~label::before {
+      background-color: $custom-control-indicator-checked-disabled-bg;
+    }
+  }
+}
+
+%custom-file-input {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  height: $custom-file-height;
+  margin: 0;
+
+  opacity: 0;
+
+  &:focus~.custom-file-label {
+    border-color: $custom-file-focus-border-color;
+    box-shadow: $custom-file-focus-box-shadow;
+  }
+
+  &:disabled~.custom-file-label {
+    background-color: $custom-file-disabled-bg;
+  }
+
+  @each $lang, $value in $custom-file-text {
+    &:lang(#{$lang})~.custom-file-label::after {
+      content: $value;
+    }
+  }
+
+  ~.custom-file-label[data-browse]::after {
+    content: attr(data-browse);
+  }
+}
+
+%form-text {
+  font-size: $form-feedback-font-size;
+
+  display: inline-block;
+
+  margin-top: $form-feedback-margin-top;
+
+  // &.??{
+  //   color: $form-feedback-valid-colo;
+  // }
+  .gfield.gfield_error & {
+    color: $form-feedback-invalid-color;
+  }
+}

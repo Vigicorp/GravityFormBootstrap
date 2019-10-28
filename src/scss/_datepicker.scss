@@ -1,0 +1,225 @@
+/*
+----------------------------------------------------------------
+
+Gravity Forms Date Picker Styles
+http: //www.gravityforms.com
+
+TODO
+ADD vars files for customize datepicker
+
+----------------------------------------------------------------
+*/
+
+.ui-datepicker {
+  font-size: 1.4rem;
+
+  width: 216px;
+  height: auto;
+  // margin: 5px auto 0;
+  margin: 0 auto;
+
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+
+
+
+  /** Header **/
+  .ui-datepicker-header {
+    font-weight: bold;
+    line-height: 30px;
+
+    display: flex; //
+
+    width: 100%; //
+    min-height: 30px !important;
+
+    color: #e0e0e0;
+    border-width: 1px 0 0 0;
+    border-style: solid;
+    border-color: #666;
+    background-color: #666; /* set the header background color */
+    box-shadow: inset 0px 1px 1px 0px rgba(250, 250, 250, .2);
+    text-shadow: 1px -1px 0px #000;
+  }
+
+
+  /** Navigation Next / prev**/
+  .ui-datepicker-prev, .ui-datepicker-next {
+    font-size: 28px;
+    line-height: 1;//
+
+    display: inline-block;
+    overflow: hidden;
+
+    width: 30px;
+    height: 30px;
+
+    cursor: pointer;
+    text-align: center;
+
+    .ui-icon {
+      @extend .sr-only;
+    }
+  }
+  .ui-datepicker-prev {
+    // float: left;
+    &:before {
+      content: "\2039";
+    }
+  }
+  .ui-datepicker-next {
+    // float: right;
+    order: 3;
+    &:before {
+      content: "\203A";
+    }
+  }
+  .ui-datepicker-next-hover, .ui-datepicker-prev-hover {
+    color: $gray-500;
+  }
+
+
+
+  /** TITLE - navigation date */
+  .ui-datepicker-title {
+    display: flex; //
+
+    text-align: center;
+
+    flex-grow: 2; //
+    select {
+      margin-top: 2.5%;
+    }
+    .ui-datepicker-month, .ui-datepicker-year {
+      @extend .form-control;
+      @extend .form-control-sm;
+
+      font-size: 1em;
+      //   width: 45%;
+
+      height: $input-height-sm;
+    }
+  }
+
+
+  /** BODY - Calendar Table **/
+  .ui-datepicker-calendar {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    thead {
+      border-bottom: 1px solid #bbb;
+      background: #f7f7f7;
+      background: linear-gradient(to bottom,  #f7f7f7 0%,#f1f1f1 100%);
+    }
+    th {
+      font-size: 6pt;
+
+      padding: 5px 0;
+
+      text-align: center;
+      text-transform: uppercase;
+
+      color: #666666;
+      text-shadow: 1px 0px 0px #fff;
+
+      filter: dropshadow(color=#fff, offx=1, offy=0);
+    }
+    tr {
+      border-bottom: 1px solid #bbb;
+      &:last-child {
+        border-bottom: 0px;
+      }
+    }
+    tbody td {
+      padding: 0;
+
+      border-top: 1px solid #bbb;
+      border-right: 1px solid #bbb;
+      &:last-child {
+        border-right: 0px;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      span, a {
+        font-weight: bold;
+        line-height: 30px;
+
+        display: inline-block;
+
+        width: 30px;
+        height: 30px;
+
+        text-align: center;
+
+        color: #666666;
+        text-shadow: 1px 1px 0px #fff;
+      }
+    }
+  }
+}
+
+
+
+
+.ui-datepicker-calendar .ui-state-default {
+  background: #ededed;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VkZWRlZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkZWRlZGUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: linear-gradient(to bottom,  #ededed 0%,#dedede 100%);
+  box-shadow: inset 1px 1px 0px 0px rgba(250, 250, 250, .5);
+
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#dedede',GradientType=0 );
+}
+
+.ui-datepicker-calendar .ui-state-hover {
+  background: #f7f7f7;
+}
+
+.ui-datepicker-calendar .ui-state-active {
+  position: relative;
+
+  margin: -1px;
+
+  color: #666; /* set the active date font color */
+  border: 1px solid #c19163; /* set the active date border color */
+  background: #fff2aa; /* set the active date background color */
+  box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, .1);
+  text-shadow: 0px 1px 0px #fff;
+
+  filter: dropshadow(color=#fff, offx=0, offy=1);
+}
+
+.ui-datepicker-unselectable .ui-state-default {
+  color: #b4b3b3;
+  background: #f4f4f4;
+}
+
+.ui-datepicker-calendar td:first-child .ui-state-active {
+  width: 29px;
+  margin-left: 0;
+}
+
+.ui-datepicker-calendar td:last-child .ui-state-active {
+  width: 29px;
+  margin-right: 0;
+}
+
+.ui-datepicker-calendar tr:last-child .ui-state-active {
+  height: 29px;
+  margin-bottom: 0;
+}
+
+td.ui-datepicker-unselectable.ui-state-disabled {
+  background-color: #d7d7d7;
+}
+
+table.ui-datepicker-calendar {
+  margin: 0 0 0 0 !important;
+}
+
+body div#ui-datepicker-div[style] {
+  z-index: 9999 !important;
+}
