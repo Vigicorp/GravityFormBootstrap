@@ -2,8 +2,8 @@
   "name": "gravity-form-bootstrap",
   "version": "0.1.0",
   "description": "CSS toolbox to overload Gravity Forms with Bootstrap 4",
-  "main": "index.js",
   "scripts": {
+    "build": "node-sass --output-style compressed --source-map dist/css --output dist/css src/scss/gravity-forms.scss",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/Vigicorp/GravityFormBootstrap/issues"
   },
-  "homepage": "https://github.com/Vigicorp/GravityFormBootstrap#readme"
+  "homepage": "https://github.com/Vigicorp/GravityFormBootstrap#readme",
+  "devDependencies": {
+    "node-sass": "^4.13.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1"
+  }
 }
