@@ -1,6 +1,6 @@
 {
   "name": "gravity-form-bootstrap",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "CSS toolbox to overload Gravity Forms with Bootstrap 4",
   "scripts": {
     "build": "node-sass --output-style compressed --source-map dist/css --output dist/css src/scss/gravity-forms.scss",
