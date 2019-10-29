@@ -16,9 +16,6 @@
   margin-bottom: $label-margin-bottom;
 }
 %label-custom {
-  @include font-weight("black");
-  @include letter-spacing(100);
-
   font-size: 1.2rem;
 
   text-transform: uppercase;

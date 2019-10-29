@@ -149,31 +149,6 @@
   }
 
 
-  // inputfile
-  .gform_drop_area {
-    &::after {
-      @include fontello-basic();
-
-      content: "\e80c";
-
-      font-size: 20px;
-      line-height: $input-height;
-
-      position: absolute;
-      z-index: 1;
-      right: $input-padding-x;
-      bottom: 0;
-
-      height: $input-height;
-
-      pointer-events: none;
-    }
-    input {
-      text-align: left;
-    }
-  }
-
-
   .gfield_description {
     @extend %form-text;
   }
