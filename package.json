@@ -1,5 +1,5 @@
 {
-  "name": "gravity-form-bootstrap",
+  "name": "@vigicorp/gravity-form-bootstrap",
   "version": "1.0.0",
   "description": "CSS toolbox to overload Gravity Forms with Bootstrap 4",
   "scripts": {
