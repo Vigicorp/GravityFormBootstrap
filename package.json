@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/Vigicorp/GravityFormBootstrap#readme",
   "devDependencies": {
-    "node-sass": "^4.13.0"
+    "node-sass": ">=4.13.1"
   },
   "dependencies": {
     "bootstrap": "^4.3.1"
