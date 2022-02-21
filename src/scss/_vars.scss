@@ -204,7 +204,7 @@
     content: "";
 
     position: absolute;
-    top: ($font-size-base * $line-height-base - $custom-control-indicator-size) / 2;
+    top: ($font-size-base * $line-height-base - $custom-control-indicator-size) * .5;
     left: -($custom-control-gutter + $custom-control-indicator-size);
 
     display: block;
@@ -223,7 +223,7 @@
     content: "";
 
     position: absolute;
-    top: ($font-size-base * $line-height-base - $custom-control-indicator-size) / 2;
+    top: ($font-size-base * $line-height-base - $custom-control-indicator-size) * .5;
     left: -($custom-control-gutter + $custom-control-indicator-size);
 
     display: block;
